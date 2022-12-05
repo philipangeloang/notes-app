@@ -3,5 +3,37 @@
 @tailwind utilities;
 
 @layer utilities {
-  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans";
+  }
+
+  #navToggle  + div > .left-panel {
+    transition: all ease-in-out 0.3s;
+  }
+
+  #navToggle:checked + div > .left-panel {
+    left: 0;
+    width: 8rem;
+    transition: all ease-in-out 0.4s;
+  }
+
+  #navToggle:checked + div > .right-panel > #navbar > label > .top {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    margin-top: 5px;
+  }
+
+  #navToggle:checked + div > .right-panel > #navbar > label > .middle {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    margin-top: -7px;
+  }
+
+  #navToggle:checked + div > .right-panel > #navbar > label > .bottom {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
 }
