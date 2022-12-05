@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Notes from "./Notes";
+
 export default function App() {
   return (
     <React.Fragment>
       <input id="navToggle" type="checkbox" className="hidden" />
       <div className="flex">
         <div className="left-panel w-0 left-[-60px] h-screen bg-white z-10 shadow-xl text-center font-bold py-6 fixed | min-[1280px]:w-32 min-[1280px]:left-0">
-          <div className="text-xl">Jitter</div>
-          <i class="fa-solid fa-circle-plus fa-3x mt-16"></i>
+          <div className="text-xl">Jotter</div>
+          <i
+            className="fa-solid fa-circle-plus fa-3x mt-16 cursor-pointer"
+            onClick={() => {
+              console.log("Clicked");
+            }}
+          ></i>
         </div>
 
         <div className="right-panel min-[1280px]:ml-32">
