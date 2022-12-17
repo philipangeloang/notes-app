@@ -1,13 +1,26 @@
+import { click } from "@testing-library/user-event/dist/click";
 import React, { useState } from "react";
 import Notes from "./Notes";
 
 export default function App() {
   const [note, setNote] = useState([]);
-  const [color, setColor] = useState();
 
-  function addNote(newNote) {
-    setNote((prevNote) => {
-      return [...prevNote, newNote];
+  function addNote(e) {
+    const clickerName = e.target.id;
+    setNote((prevValue) => {
+      if (clickerName === "blue") {
+        return [...prevValue, "blue"];
+      } else if (clickerName === "red") {
+        return [...prevValue, "red"];
+      } else if (clickerName === "yellow") {
+        return [...prevValue, "yellow"];
+      } else if (clickerName === "violet") {
+        return [...prevValue, "violet"];
+      } else if (clickerName === "green") {
+        return [...prevValue, "green"];
+      } else if (clickerName === "orange") {
+        return [...prevValue, "orange"];
+      }
     });
   }
 
@@ -23,26 +36,32 @@ export default function App() {
           </label>
           <div className="color-pane relative bottom-8 opacity-0 transition-all duration-300 ease-in">
             <div
+              id="blue"
               className="rounded-full bg-[#58CFEE] h-5 w-5 mx-auto mt-5 cursor-pointer"
               onClick={addNote}
             />
             <div
+              id="red"
               className="rounded-full bg-[#F7979F] h-5 w-5 mx-auto mt-5 cursor-pointer"
               onClick={addNote}
             />
             <div
+              id="yellow"
               className="rounded-full bg-[#F9E193] h-5 w-5 mx-auto mt-5 cursor-pointer"
               onClick={addNote}
             />
             <div
+              id="violet"
               className="rounded-full bg-[#A990BA] h-5 w-5 mx-auto mt-5 cursor-pointer"
               onClick={addNote}
             />
             <div
+              id="green"
               className="rounded-full bg-[#DFE3BC] h-5 w-5 mx-auto mt-5 cursor-pointer"
               onClick={addNote}
             />
             <div
+              id="orange"
               className="rounded-full bg-[#FFB38C] h-5 w-5 mx-auto mt-5 cursor-pointer"
               onClick={addNote}
             />
@@ -72,7 +91,7 @@ export default function App() {
 
           <div className="p-8 gap-8 grid grid-cols-1 | min-[500px]:grid-cols-2 | min-[840px]:grid-cols-3 | min-[1280px]:grid-cols-4 | min-[1580px]:grid-cols-5 | min-[1800px]:grid-cols-6">
             {note.map((noteItem, index) => {
-              return <Notes key={index} />;
+              return <Notes noteColor={noteItem} key={index} id={index} />;
             })}
           </div>
         </div>
