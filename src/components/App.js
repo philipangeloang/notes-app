@@ -2,21 +2,54 @@ import React, { useState } from "react";
 import Notes from "./Notes";
 
 export default function App() {
+  const [note, setNote] = useState([]);
+  const [color, setColor] = useState();
+
+  function addNote(newNote) {
+    setNote((prevNote) => {
+      return [...prevNote, newNote];
+    });
+  }
+
   return (
     <React.Fragment>
       <input id="navToggle" type="checkbox" className="hidden" />
       <div className="flex">
         <div className="left-panel w-0 left-[-60px] h-screen bg-white z-10 shadow-xl text-center font-bold py-6 fixed | min-[1280px]:w-32 min-[1280px]:left-0">
           <div className="text-xl">Jotter</div>
-          <i
-            className="fa-solid fa-circle-plus fa-3x mt-16 cursor-pointer"
-            onClick={() => {
-              console.log("Clicked");
-            }}
-          ></i>
+          <input id="addToggle" type="checkbox" className="hidden" />
+          <label htmlFor="addToggle">
+            <i className="fa-solid fa-circle-plus fa-3x mt-16 cursor-pointer"></i>
+          </label>
+          <div className="color-pane relative bottom-8 opacity-0 transition-all duration-300 ease-in">
+            <div
+              className="rounded-full bg-[#58CFEE] h-5 w-5 mx-auto mt-5 cursor-pointer"
+              onClick={addNote}
+            />
+            <div
+              className="rounded-full bg-[#F7979F] h-5 w-5 mx-auto mt-5 cursor-pointer"
+              onClick={addNote}
+            />
+            <div
+              className="rounded-full bg-[#F9E193] h-5 w-5 mx-auto mt-5 cursor-pointer"
+              onClick={addNote}
+            />
+            <div
+              className="rounded-full bg-[#A990BA] h-5 w-5 mx-auto mt-5 cursor-pointer"
+              onClick={addNote}
+            />
+            <div
+              className="rounded-full bg-[#DFE3BC] h-5 w-5 mx-auto mt-5 cursor-pointer"
+              onClick={addNote}
+            />
+            <div
+              className="rounded-full bg-[#FFB38C] h-5 w-5 mx-auto mt-5 cursor-pointer"
+              onClick={addNote}
+            />
+          </div>
         </div>
 
-        <div className="right-panel min-[1280px]:ml-32">
+        <div className="right-panel min-[1280px]:ml-32 w-full">
           <div id="navbar" className="px-8 pt-6 pb-12 flex justify-between">
             <div>
               <i className="fa-solid fa-magnifying-glass text-[#c2c2c2]"></i>
@@ -38,7 +71,9 @@ export default function App() {
           </div>
 
           <div className="p-8 gap-8 grid grid-cols-1 | min-[500px]:grid-cols-2 | min-[840px]:grid-cols-3 | min-[1280px]:grid-cols-4 | min-[1580px]:grid-cols-5 | min-[1800px]:grid-cols-6">
-            <Notes />
+            {note.map((noteItem, index) => {
+              return <Notes key={index} />;
+            })}
           </div>
         </div>
       </div>

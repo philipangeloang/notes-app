@@ -36,4 +36,20 @@
     -webkit-transform: scale(0);
     transform: scale(0);
   }
+
+  #addToggle + label i {
+    transform: rotate(-90deg);
+    transition: all 0.3s ease-in;
+  }
+
+  #addToggle:checked + label i {
+    transform: rotate(90deg);
+    transition: all 0.3s ease-in;
+  }
+
+  #addToggle:checked ~ .color-pane {
+    bottom: 0;
+    opacity: 1;
+    transition: all 0.3s ease-in;
+  }
 }
