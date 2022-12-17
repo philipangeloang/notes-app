@@ -34,7 +34,7 @@ export default function App() {
           <label htmlFor="addToggle">
             <i className="fa-solid fa-circle-plus fa-3x mt-16 cursor-pointer"></i>
           </label>
-          <div className="color-pane relative bottom-8 opacity-0 transition-all duration-300 ease-in">
+          <div className="color-pane relative bottom-8 opacity-0 pointer-events-none transition-all duration-300 ease-in">
             <div
               id="blue"
               className="rounded-full bg-[#58CFEE] h-5 w-5 mx-auto mt-5 cursor-pointer"
