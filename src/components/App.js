@@ -91,7 +91,20 @@ export default function App() {
 
           <div className="p-8 gap-8 grid grid-cols-1 | min-[500px]:grid-cols-2 | min-[840px]:grid-cols-3 | min-[1280px]:grid-cols-4 | min-[1580px]:grid-cols-5 | min-[1800px]:grid-cols-6">
             {note.map((noteItem, index) => {
-              return <Notes noteColor={noteItem} key={index} id={index} />;
+              return (
+                <Notes
+                  key={index}
+                  id={index}
+                  noteColor={noteItem}
+                  onDelete={(id) => {
+                    setNote((prevValue) => {
+                      return prevValue.filter((noteItem, index) => {
+                        return index !== id;
+                      });
+                    });
+                  }}
+                />
+              );
             })}
           </div>
         </div>

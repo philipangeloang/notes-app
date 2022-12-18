@@ -43,7 +43,12 @@ export default function Notes(props) {
         <div>
           {month} {day}, {year}
         </div>
-        <i className="fa-solid fa-trash text-white rounded-full p-3 bg-black" />
+        <i
+          className="fa-solid fa-trash text-white rounded-full p-3 bg-black"
+          onClick={() => {
+            return props.onDelete(props.id);
+          }}
+        />
       </div>
     </div>
   );
