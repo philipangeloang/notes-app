@@ -1,11 +1,10 @@
-import { click } from "@testing-library/user-event/dist/click";
 import React, { useState } from "react";
 import Notes from "./Notes";
 
 export default function App() {
-  const [note, setNote] = useState([]);
+const [note, setNote] = useState([]);
 
-  function addNote(e) {
+function addNote(e) {
     const clickerName = e.target.id;
     setNote((prevValue) => {
       if (clickerName === "blue") {

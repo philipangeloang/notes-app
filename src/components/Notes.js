@@ -1,4 +1,6 @@
 import React from "react";
+import styled, { keyframes } from "styled-components";
+import { headShake } from "react-animations";
 
 export default function Notes(props) {
   const date = new Date();
@@ -24,32 +26,38 @@ export default function Notes(props) {
     backgroundColorStyle.backgroundColor = "#FFB38C";
   }
 
+  const HeadShake = styled.div`
+    animation: 1.2s ${keyframes`${headShake}`} 50ms;
+  `;
+
   return (
-    <div
-      className="px-7 pt-7 pb-4 aspect-square rounded-2xl"
-      style={backgroundColorStyle}
-    >
-      <input
-        name="title"
-        placeholder="Title"
-        className="bg-transparent outline-none w-full font-bold text-lg placeholder:text-black placeholder:font-bold"
-      />
-      <textarea
-        name="content"
-        placeholder="This is Jotter Notes"
-        className="bg-transparent outline-none w-full h-[75%] resize-none font-medium placeholder:text-black"
-      />
-      <div className="flex justify-between items-center text-sm text-[#202020]">
-        <div>
-          {month} {day}, {year}
-        </div>
-        <i
-          className="fa-solid fa-trash text-white rounded-full p-3 bg-black cursor-pointer"
-          onClick={() => {
-            return props.onDelete(props.id);
-          }}
+    <HeadShake>
+      <div
+        className="px-7 pt-7 pb-4 aspect-square rounded-2xl"
+        style={backgroundColorStyle}
+      >
+        <input
+          name="title"
+          placeholder="Title"
+          className="bg-transparent outline-none w-full font-bold text-lg placeholder:text-black placeholder:font-bold"
         />
+        <textarea
+          name="content"
+          placeholder="This is Jotter Notes"
+          className="bg-transparent outline-none w-full h-[75%] resize-none font-medium placeholder:text-black"
+        />
+        <div className="flex justify-between items-center text-sm text-[#202020]">
+          <div>
+            {month} {day}, {year}
+          </div>
+          <i
+            className="fa-solid fa-trash text-white rounded-full p-3 bg-black cursor-pointer"
+            onClick={() => {
+              return props.onDelete(props.id);
+            }}
+          />
+        </div>
       </div>
-    </div>
+    </HeadShake>
   );
 }
